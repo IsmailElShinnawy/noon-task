@@ -1,6 +1,7 @@
 import { NAVBAR_HEIGHT } from '@/constants'
 import Image from 'next/image'
 import Link, { LinkProps } from 'next/link'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 
 const NavBar = styled.nav`
@@ -31,11 +32,17 @@ type NavBarLinkProps = {
 const NavBarLink = ({
     defaultIcon: DefaultIcon,
     filledIcon: FilledIcon,
+    href,
     ...linkProps
 }: NavBarLinkProps) => {
+    const { pathname } = useRouter()
     return (
-        <StyledLink {...linkProps}>
-            <DefaultIcon width="32px" height="32px" />
+        <StyledLink href={href} {...linkProps}>
+            {href === pathname ? (
+                <FilledIcon width="32px" height="32px" fill="white" />
+            ) : (
+                <DefaultIcon width="32px" height="32px" />
+            )}
         </StyledLink>
     )
 }

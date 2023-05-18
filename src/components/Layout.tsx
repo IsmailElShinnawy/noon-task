@@ -7,6 +7,7 @@ import {
 import { NavBar, NavBarLink } from './NavBar'
 import { styled } from 'styled-components'
 import { NAVBAR_HEIGHT } from '@/constants'
+import { useRouter } from 'next/router'
 
 type LayoutProps = {
     children: React.ReactNode
