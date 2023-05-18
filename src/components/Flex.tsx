@@ -3,10 +3,11 @@ import styled from 'styled-components'
 type FlexProps = {
     gap?: string
     direction?: 'row' | 'column'
-    justify?: 'end' | 'space-between'
+    justify?: 'end' | 'space-between' | 'center'
     isCentered?: boolean
     children?: React.ReactNode
     className?: string
+    height?: string
 }
 
 const FlexComponent = ({ children, className }: FlexProps) => {
@@ -20,6 +21,7 @@ const Flex = styled(FlexComponent)`
     justify-content: ${(props) => props.justify || 'start'};
     align-items: ${(props) => (props.isCentered ? 'center' : 'start')};
     flex-wrap: wrap;
+    height: ${(props) => props.height || 'auto'};
 `
 
 export { Flex }

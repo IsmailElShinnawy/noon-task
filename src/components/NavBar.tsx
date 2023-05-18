@@ -1,3 +1,4 @@
+import { NAVBAR_HEIGHT } from '@/constants'
 import Image from 'next/image'
 import Link, { LinkProps } from 'next/link'
 import styled from 'styled-components'
@@ -10,7 +11,7 @@ const NavBar = styled.nav`
     display: flex;
     justify-content: space-around;
     align-items: center;
-
+    height: ${NAVBAR_HEIGHT};
     @media (min-width: 768px) {
         position: sticky;
         top: 0;
