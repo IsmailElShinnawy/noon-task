@@ -19,6 +19,7 @@ const Flex = styled(FlexComponent)`
   gap: ${props => props.gap || '0'};
   justify-content: ${props => props.justify || 'start'};
   align-items: ${props => props.isCentered ? 'center' : 'start'};
+  flex-wrap: wrap;
 `
 
 export {
