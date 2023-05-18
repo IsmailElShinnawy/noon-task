@@ -1,10 +1,10 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 type TextProps = {
     className?: string
     children: React.ReactNode
     color?: string
-    minHeight?: string
+    numberOfLines?: number
 }
 
 const TextComponent = ({ className, children }: TextProps) => {
@@ -13,5 +13,12 @@ const TextComponent = ({ className, children }: TextProps) => {
 
 export const Text = styled(TextComponent)`
     color: ${({ color }) => color || 'black'};
-    min-height: ${({ minHeight }) => minHeight || 'auto'};
+    ${(props) =>
+        props.numberOfLines &&
+        css`
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: ${props.numberOfLines};
+            overflow: hidden;
+        `}
 `

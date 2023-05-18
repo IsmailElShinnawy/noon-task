@@ -93,7 +93,7 @@ const Card = ({ product }: CardProps) => {
                     <Text color="#4d5bcb">{numberOfFavorites} likes</Text>
                 </Flex>
                 <Flex direction="column" gap="0.25rem">
-                    <Text minHeight="2.4rem">{description}</Text>
+                    <Text numberOfLines={3}>{description}</Text>
                     <Flex gap="0.25rem">
                         {tags.map((tag, idx) => (
                             <Link
