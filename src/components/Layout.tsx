@@ -28,11 +28,13 @@ const Layout = ({ children }: LayoutProps) => {
                 <NavBarLink
                     defaultIcon={HomeOutlineIcon}
                     filledIcon={HomeFilledIcon}
+                    label="Home"
                     href="/"
                 />
                 <NavBarLink
                     defaultIcon={HeartOutlineIcon}
                     filledIcon={HeartFilledIcon}
+                    label="Favorites"
                     href="/favorites"
                 />
             </NavBar>
