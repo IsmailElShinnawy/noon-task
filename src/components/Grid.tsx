@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
-  grid-gap: 20px;
-  
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-`;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    grid-gap: 20px;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+`
