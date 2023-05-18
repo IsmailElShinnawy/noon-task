@@ -52,9 +52,10 @@ const AvatarImage = styled(Image)`
 
 type CardProps = {
     product: Product
+    onUnfavorite?: (product: Product) => void
 }
 
-const Card = ({ product }: CardProps) => {
+const Card = ({ product, onUnfavorite }: CardProps) => {
     const {
         seller,
         img,
@@ -80,6 +81,7 @@ const Card = ({ product }: CardProps) => {
     const handleUnfavorite = () => {
         setIsFavorited(false)
         updateFavorites(product, 'remove')
+        onUnfavorite?.(product)
     }
 
     return (

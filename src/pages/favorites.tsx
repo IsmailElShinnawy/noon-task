@@ -11,6 +11,14 @@ const Favorites = () => {
         setFavorites(getFavorites())
     }, [])
 
+    const onUnfavorite = (product: Product) => {
+        setFavorites((favorites) =>
+            favorites.filter(
+                (favoriteProduct) => favoriteProduct.id !== product.id
+            )
+        )
+    }
+
     if (favorites.length === 0) {
         return (
             <Flex
@@ -29,7 +37,11 @@ const Favorites = () => {
         <main>
             <Grid>
                 {favorites.map((product) => (
-                    <Card key={product.id} product={product} />
+                    <Card
+                        key={product.id}
+                        product={product}
+                        onUnfavorite={onUnfavorite}
+                    />
                 ))}
             </Grid>
         </main>
