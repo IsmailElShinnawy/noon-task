@@ -75,7 +75,9 @@ const Card = ({product}: CardProps) => {
       <Flex direction='column' gap="0.25rem">
         <Text minHeight='2.4rem'>{description}</Text>
         <Flex gap="0.25rem">
-          {tags.map((tag, idx) => <Link href={`/search?tag=${tag}`} key={`${tag}-${idx}`}>#{tag}</Link>)}
+          {tags.map((tag, idx) => <Link href={`/search?tag=${tag}`} key={`${tag}-${idx}`}>
+            <Text color="#4d5bcb">#{tag}</Text>
+            </Link>)}
         </Flex>
       </Flex>
       <span>View {numberOfComments} comments</span>
