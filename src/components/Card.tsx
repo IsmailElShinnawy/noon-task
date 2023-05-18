@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import { Flex } from './Flex'
 import { Text } from './Text'
 import { HeartFilledIcon, HeartOutlineIcon } from '@/icons'
+import { useEffect, useState } from 'react'
+import { isProductFavorited, updateFavorites } from '@/utils'
 
 const Wrapper = styled.article`
     border-radius: 0.5rem;
@@ -62,7 +64,24 @@ const Card = ({ product }: CardProps) => {
         description,
         tags,
         numberOfComments,
+        id,
     } = product
+    const [isFavorited, setIsFavorited] = useState(false)
+
+    useEffect(() => {
+        setIsFavorited(isProductFavorited(product.id))
+    }, [product.id])
+
+    const handleFavorite = () => {
+        setIsFavorited(true)
+        updateFavorites(product, 'add')
+    }
+
+    const handleUnfavorite = () => {
+        setIsFavorited(false)
+        updateFavorites(product, 'remove')
+    }
+
     return (
         <Wrapper>
             <Header>
@@ -80,7 +99,20 @@ const Card = ({ product }: CardProps) => {
                         <h3>{title}</h3>
                         <span>AED {price.toFixed(0)}</span>
                     </Flex>
-                    <HeartOutlineIcon width="24px" height="24px" />
+                    {isFavorited ? (
+                        <HeartFilledIcon
+                            width="24px"
+                            height="24px"
+                            fill="white"
+                            onClick={handleUnfavorite}
+                        />
+                    ) : (
+                        <HeartOutlineIcon
+                            width="24px"
+                            height="24px"
+                            onClick={handleFavorite}
+                        />
+                    )}
                 </Flex>
             </Body>
             <Footer>
@@ -90,7 +122,9 @@ const Card = ({ product }: CardProps) => {
                         height="16px"
                         fill="#4d5bcb"
                     />
-                    <Text color="#4d5bcb">{numberOfFavorites} likes</Text>
+                    <Text color="#4d5bcb">
+                        {numberOfFavorites + (isFavorited ? 1 : 0)} likes
+                    </Text>
                 </Flex>
                 <Flex direction="column" gap="0.25rem">
                     <Text numberOfLines={3}>{description}</Text>
