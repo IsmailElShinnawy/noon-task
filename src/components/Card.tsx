@@ -93,7 +93,9 @@ const Card = ({ product, onUnfavorite }: CardProps) => {
                     width={32}
                     height={32}
                 />
-                <Link href="#">{seller.username}</Link>
+                <Link href={`/users/${seller.username}`}>
+                    {seller.username}
+                </Link>
             </Header>
             <Body src={img}>
                 <Flex justify="space-between" isCentered>
