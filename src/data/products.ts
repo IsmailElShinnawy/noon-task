@@ -8,8 +8,8 @@ for(let i = 0; i < 20; ++i) {
     id:  faker.string.uuid(),
     description:  faker.lorem.paragraph(),
     img: faker.image.url(),
-    numberOfComments: faker.number.int(),
-    numberOfFavorites: faker.number.int(),
+    numberOfComments: faker.number.int({max: 200}),
+    numberOfFavorites: faker.number.int({max: 200}),
     price: faker.number.float({precision: 2, min: 100, max: 1000}),
     seller: {
       img: faker.image.avatar(),

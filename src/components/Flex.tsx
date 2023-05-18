@@ -5,9 +5,15 @@ type FlexProps = {
   direction?: 'row' | 'column'
   justify?: 'end' | 'space-between'
   isCentered?: boolean
+  children?: React.ReactNode
+  className?: string
 }
 
-const Flex = styled.div<FlexProps>`
+const FlexComponent = ({children, className}: FlexProps) => {
+  return <div className={className}>{children}</div>
+}
+
+const Flex = styled(FlexComponent)`
   display: flex;
   flex-direction: ${props => props.direction || 'row'};
   gap: ${props => props.gap || '0'};

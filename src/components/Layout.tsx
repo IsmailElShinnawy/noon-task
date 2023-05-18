@@ -1,3 +1,4 @@
+import { HeartFilledIcon, HeartOutlineIcon, HomeFilledIcon, HomeOutlineIcon } from '@/icons';
 import {NavBar, NavBarLink} from './NavBar';
 
 type LayoutProps = {
@@ -8,8 +9,8 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <NavBar>
-        <NavBarLink iconSrc="/icons/home-icon.svg" alt="Home icon" href="/" />
-        <NavBarLink iconSrc="/icons/heart-icon.svg" alt="Favorites icon" href="/favorites" />
+        <NavBarLink defaultIcon={HomeOutlineIcon} filledIcon={HomeFilledIcon} href="/" />
+        <NavBarLink defaultIcon={HeartOutlineIcon} filledIcon={HeartFilledIcon} href="/favorites" />
       </NavBar>
       {children}
     </>

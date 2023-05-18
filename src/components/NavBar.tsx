@@ -23,13 +23,13 @@ const StyledLink = styled(Link)`
 `
 
 type NavBarLinkProps = {
-  iconSrc: string;
-  alt: string;
+  defaultIcon: React.FC<any>;
+  filledIcon: React.FC<any>;
 } & LinkProps
 
-const NavBarLink = ({iconSrc, alt, ...linkProps}: NavBarLinkProps) => {
+const NavBarLink = ({defaultIcon: DefaultIcon, filledIcon: FilledIcon, ...linkProps}: NavBarLinkProps) => {
   return <StyledLink {...linkProps}>
-      <Image priority alt={alt} src={iconSrc} width={32} height={32} />
+      <DefaultIcon width="32px" height="32px" />
   </StyledLink>
 }
 

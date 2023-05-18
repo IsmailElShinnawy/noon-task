@@ -3,6 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { Flex } from './Flex'
+import { Text } from './Text'
+import {  HeartFilledIcon, HeartOutlineIcon } from '@/icons'
 
 const Wrapper = styled.article`
   border-radius: 0.5rem;
@@ -10,11 +12,12 @@ const Wrapper = styled.article`
 `
 
 const Header = styled.header`
-  height: 3rem;
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  padding: 0 0.5rem;
+  padding: 0.5rem;
+  color: #4d5bcb;
+  font-size: 0.8rem;
 `
   
 const Body = styled.div<{src: string}>`
@@ -31,7 +34,11 @@ const Body = styled.div<{src: string}>`
 `
 
 const Footer = styled.footer`
-  height: 6rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.8rem;
 `
 
 const AvatarImage = styled(Image)`
@@ -43,7 +50,7 @@ type CardProps = {
 }
 
 const Card = ({product}: CardProps) => {
-  const {seller, img, title, price} = product;
+  const {seller, img, title, price, numberOfFavorites, description, tags, numberOfComments} = product;
   return <Wrapper>
     <Header>
       <AvatarImage src={seller.img} alt={`${seller.username} profile picture`} width={32} height={32}/>
@@ -57,10 +64,22 @@ const Card = ({product}: CardProps) => {
           <h3>{title}</h3>
           <span>AED {price.toFixed(0)}</span>
         </Flex>
-        <Image src="/icons/heart-icon.svg" alt='favorite' width={24} height={24}/>
+        <HeartOutlineIcon width="24px" height="24px" />
       </Flex>
     </Body>
-    <Footer />
+    <Footer>
+      <Flex gap="0.5rem" isCentered>
+        <HeartFilledIcon width="16px" height="16px" fill="#4d5bcb" />
+        <Text color="#4d5bcb">{numberOfFavorites} likes</Text>
+      </Flex>
+      <Flex direction='column' gap="0.25rem">
+        <Text minHeight='2.4rem'>{description}</Text>
+        <Flex gap="0.25rem">
+          {tags.map((tag, idx) => <Link href={`/search?tag=${tag}`} key={`${tag}-${idx}`}>#{tag}</Link>)}
+        </Flex>
+      </Flex>
+      <span>View {numberOfComments} comments</span>
+    </Footer>
   </Wrapper>
 }
 
