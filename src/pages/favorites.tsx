@@ -34,17 +34,15 @@ const Favorites = () => {
     }
 
     return (
-        <main>
-            <Grid>
-                {favorites.map((product) => (
-                    <Card
-                        key={product.id}
-                        product={product}
-                        onUnfavorite={onUnfavorite}
-                    />
-                ))}
-            </Grid>
-        </main>
+        <Grid>
+            {favorites.map((product) => (
+                <Card
+                    key={product.id}
+                    product={product}
+                    onUnfavorite={onUnfavorite}
+                />
+            ))}
+        </Grid>
     )
 }
 

@@ -8,13 +8,11 @@ type HomeProps = {
 
 const Home = ({ products }: HomeProps) => {
     return (
-        <main>
-            <Grid>
-                {products.map((product) => (
-                    <Card key={product.id} product={product} />
-                ))}
-            </Grid>
-        </main>
+        <Grid>
+            {products.map((product) => (
+                <Card key={product.id} product={product} />
+            ))}
+        </Grid>
     )
 }
 

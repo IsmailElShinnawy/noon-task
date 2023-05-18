@@ -5,10 +5,20 @@ import {
     HomeOutlineIcon,
 } from '@/icons'
 import { NavBar, NavBarLink } from './NavBar'
+import { styled } from 'styled-components'
+import { NAVBAR_HEIGHT } from '@/constants'
 
 type LayoutProps = {
     children: React.ReactNode
 }
+
+const Wrapper = styled.main`
+    padding-bottom: ${NAVBAR_HEIGHT};
+
+    @media (min-width: 768px) {
+        padding-bottom: 0;
+    }
+`
 
 const Layout = ({ children }: LayoutProps) => {
     return (
@@ -25,7 +35,7 @@ const Layout = ({ children }: LayoutProps) => {
                     href="/favorites"
                 />
             </NavBar>
-            {children}
+            <Wrapper>{children}</Wrapper>
         </>
     )
 }
